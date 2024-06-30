@@ -1,0 +1,53 @@
+{
+    "memo": "This data is prototype for member data",
+    "members": [
+        {
+            "token?": "This field must be encrypted",
+            "name": "CistusF",
+            "id": "backdev",
+            "pw": "This field must be encrypted",
+            "bookMarks": {
+                "words_1": [
+                    "Word1", "Word2", "Word3", "Word4"
+                ],
+                "words_2": [
+                    "Word1", "Word2", "Word3"
+                ]
+            },
+            "memos": [
+                {
+                    "title": "Gango is crazy",
+                    "context": "This data is prototype for member data"
+                },
+                {
+                    "title": "Weather is crazy",
+                    "context": "So hot hot"
+                }
+            ]
+        },
+        {
+            "token?": "This field must be encrypted",
+            "name": "insub",
+            "id": "frontdev",
+            "pw": "This field must be encrypted",
+            "bookMarks": {
+                "words_1": [
+                    "Word1", "Word2", "Word3", "Word4"
+                ],
+                "words_2": [
+                    "Word1", "Word2", "Word3"
+                ]
+            },
+            "memos": [
+                {
+                    "title": "CEO is crazy",
+                    "context": "We will rock you."
+                },
+                {
+                    "title": "MacOS is crazy",
+                    "context": "Freash apple."
+                }
+            ]
+        }
+    ] 
+}
