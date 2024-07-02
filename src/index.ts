@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import './utils/Database';
-import './environment';
 import express, { json, urlencoded } from 'express';
 import cors from 'cors';
 import api from './routes/api.routes';
