@@ -3,7 +3,7 @@ import { config } from 'dotenv';
 import { join } from 'path';
 const NODE_ENV = process.env.NODE_ENV;
 config({
-    path: join(__dirname, "..", (NODE_ENV === 'production' ? ".env" : ".env"))
+    path: join(__dirname, "..", (NODE_ENV === 'production' ? ".env" : "test.env"))
 });
 
 // Load modules
