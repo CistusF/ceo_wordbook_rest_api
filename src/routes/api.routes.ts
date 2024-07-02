@@ -9,7 +9,7 @@ import { Router } from "express";
 import accounts from './api/account.routes';
 import memo from './api/memo.routes';
 import words from './api/words.routes';
-import { env, getWorkbook } from "../utils/utils";
+import { getWorkbook } from "../utils/utils";
 const router = Router();
 
 router.use("/account", accounts);
@@ -71,7 +71,7 @@ router.use("/words", words);
  */
 router.post("/version", async (req, res) => {
     const { version } = req.body;
-    if (version != env.npm_package_version) {
+    if (version != process.env.npm_package_version) {
         const sheetData = getWorkbook();
         res.status(400).json({
             status: 1,

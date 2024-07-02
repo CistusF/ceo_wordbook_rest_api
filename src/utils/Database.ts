@@ -1,9 +1,8 @@
 import { Schema, connect, model } from 'mongoose';
-import { env } from './utils';
 import { userType } from '../interfaces/User.interface';
 
 (() => {
-    connect(env.MONGO_DB_URI)
+    connect(process.env.MONGO_DB_URI ?? 'mongodb://localhost:' + process.env.PORT)
         .then(() => {
             console.log("[MongoDB] Connected to Database");
         })

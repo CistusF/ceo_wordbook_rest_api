@@ -1,10 +1,8 @@
-import { envTypes } from '../interfaces/Commons';
 import { WorkSheet, readFile, utils } from 'xlsx';
 import { sheetDataType, sheetType } from '../interfaces/Sheet.interface';
 import { userDataType, userType } from '../interfaces/User.interface';
 import { Document } from 'mongoose';
 
-export const env = process.env as envTypes;
 export const workbook = readFile("./words.xlsx");
 
 /**

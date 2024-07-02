@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import './utils/Database';
+import './environment';
 import express, { json, urlencoded } from 'express';
 import cors from 'cors';
 import api from './routes/api.routes';
@@ -8,6 +9,7 @@ import { serve, setup } from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 
 const app = express();
+const port = parseInt(process.env.PORT ?? "3000");
 
 const specs = swaggerJsdoc(options);
 app.use("/api-docs",
@@ -21,6 +23,6 @@ app.use(json());
 
 app.use("/api", api);
 
-app.listen(80, () => {
-    console.log("Web is listening on port 80");
+app.listen(port, () => {
+    console.log("Web is listening on port " + port);
 });

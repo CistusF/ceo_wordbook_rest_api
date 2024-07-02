@@ -1,12 +1,11 @@
 import { Options } from "swagger-jsdoc";
-import { env } from "./utils";
 
 export const options: Options = {
     definition: {
         openapi: "3.0.0",
         info: {
             title: "CEO_WORDBOOK",
-            version: env.npm_package_version,
+            version: process.env.npm_package_version ?? "version is not found",
             description:
                 "Simple REST_API for CEO_WORDBOOK",
             license: {
