@@ -9,7 +9,7 @@ import { isUser } from "../utils/utils";
  */
 export const bookmark = async (token: string, word: string): Promise<boolean> => {
     const user = await userModel.findOne({ token });
-    if (isUser(user) && !word) {
+    if (isUser(user) && word) {
         if (user.bookmarks.includes(word)) {
             const index = user.bookmarks.indexOf(word);
             user.bookmarks.splice(index, 1);

@@ -10,7 +10,7 @@ import { isUser } from "../utils/utils";
  */
 export const create = async (token: string, title: string, context: string): Promise<boolean> => {
     const user = await userModel.findOne({ token });
-    if (isUser(user) && !title && !context) {
+    if (isUser(user) && title && context) {
         const memo = {
             title,
             context
@@ -31,7 +31,7 @@ export const create = async (token: string, title: string, context: string): Pro
  */
 export const remove = async (token: string, index: number): Promise<boolean> => {
     const user = await userModel.findOne({ token });
-    if (isUser(user) && !index) {
+    if (isUser(user) && index) {
         user.memos.slice(index, 1);
         await user.save();
         return true;
@@ -49,7 +49,7 @@ export const remove = async (token: string, index: number): Promise<boolean> => 
  */
 export const update = async (token: string, index: number, title: string, context: string): Promise<boolean> => {
     const user = await userModel.findOne({ token });
-    if (isUser(user) && !index) {
+    if (isUser(user) && index) {
         const memo = user.memos[index];
         memo.title = title;
         memo.context = context;
