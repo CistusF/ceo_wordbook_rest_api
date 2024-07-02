@@ -1,14 +1,16 @@
 import { Schema, connect, model } from 'mongoose';
 import { userType } from '../interfaces/User.interface';
+import { logger } from './utils';
+import { logType } from '../interfaces/Utils.interface';
 
 (() => {
     connect(process.env.MONGO_DB_URI ?? 'mongodb://localhost:' + process.env.PORT)
         .then(() => {
-            console.log("[MongoDB] Connected to Database");
+            logger("Connected to Database", "MongoDB", logType.success);
         })
         .catch((e) => {
-            console.log(e)
-            throw new Error("[MongoDB] Failed to connect");
+            logger(e, "MongoDB", logType.success);
+            throw new Error("Failed to connect");
         });
 })();
 

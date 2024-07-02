@@ -2,8 +2,54 @@ import { WorkSheet, readFile, utils } from 'xlsx';
 import { sheetDataType, sheetType } from '../interfaces/Sheet.interface';
 import { userDataType, userType } from '../interfaces/User.interface';
 import { Document } from 'mongoose';
+import chalk from 'chalk';
+import { logType } from '../interfaces/Utils.interface';
+import { NextFunction, Request, Response } from 'express';
+
 
 export const workbook = readFile("./words.xlsx");
+
+/**
+ * Print debugging information
+ * @param {string} info - infomation about the debug
+ * @param {}
+ */
+export const logger = (info: string | string[], title?: string, typeCode?: logType): void => {
+    if (typeof info !== 'string') {
+        info.forEach(i => {
+            logger(i, title, typeCode);
+        })
+    } else {
+        var logColor = "white";
+        const ctx = new chalk.Instance({ level: 3 });
+
+        switch (typeCode) {
+            case logType.error:
+                logColor = "red";
+                break;
+            case logType.warn:
+                logColor = "yellow";
+                break;
+            case logType.success:
+                logColor = "green";
+                break;
+        };
+        console.log(ctx`{bold.${logColor} ⚑ [%s]} : %s`, title ?? "DEBUG", info);
+    };
+};
+
+/**
+ * Add middleware for logging
+ */
+export const logMiddle = (req:Request, res: Response, next:NextFunction) => {
+    if (req.method === "POST") {
+        const title = req.url.split('/').filter(i => i).join("-").toUpperCase();
+        const info = JSON.stringify(req.body) ?? "Body is not found.";
+        logger(info, title, logType.success);
+    };
+
+    next();
+};
 
 /**
  * Type checking for sheet

@@ -9,12 +9,15 @@ import { Router } from "express";
 import accounts from './api/account.routes';
 import memo from './api/memo.routes';
 import words from './api/words.routes';
-import { getWorkbook } from "../utils/utils";
+import { getWorkbook, logMiddle } from "../utils/utils";
 const router = Router();
 
 router.use("/account", accounts);
 router.use("/memo", memo);
 router.use("/words", words);
+if (process.env.NODE_ENV === "develoment") {
+    router.use(logMiddle);
+};
 
 /**
  * @swagger

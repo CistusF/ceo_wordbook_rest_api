@@ -7,8 +7,12 @@
 
 import { Router } from "express";
 import { create, remove, update } from "../../Data/memo";
+import { logMiddle } from "../../utils/utils";
 
 const router = Router();
+if (process.env.NODE_ENV === "develoment") {
+    router.use(logMiddle);
+};
 
 /**
  * @swagger
