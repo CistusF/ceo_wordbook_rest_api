@@ -1,5 +1,5 @@
-import 'dotenv/config';
 import './utils/Database';
+import 'dotenv/config';
 import express, { json, urlencoded } from 'express';
 import cors from 'cors';
 import api from './routes/api.routes';
@@ -25,3 +25,14 @@ app.use("/api", api);
 app.listen(port, () => {
     console.log("Web is listening on port " + port);
 });
+
+declare global {
+    namespace NodeJS {
+        interface ProcessEnv {
+            NODE_ENV: 'develoment' | 'test' | 'production';
+            MONGO_DB_URI?: string;
+            PORT?: string;
+            npm_package_version: string;
+        }
+    }
+}
