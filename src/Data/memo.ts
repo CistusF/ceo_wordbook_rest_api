@@ -32,8 +32,10 @@ export const create = async (token: string, title: string, context: string): Pro
 export const remove = async (token: string, index: number): Promise<boolean> => {
     const user = await userModel.findOne({ token });
     if (isUser(user) && !isNaN(index)) {
-        user.memos.slice(index, 1);
-        await user.save();
+        user.memos.splice(index, 1);
+        await user.updateOne({
+            memos: user.memos
+        });
         return true;
     };
     return false;
@@ -53,7 +55,9 @@ export const update = async (token: string, index: number, title: string, contex
         const memo = user.memos[index];
         memo.title = title;
         memo.context = context;
-        await user.save();
+        await user.updateOne({
+            memo: user.memos
+        });
         return true;
     };
     return false;
