@@ -20,7 +20,7 @@ export const options: Options = {
         },
         servers: [
             {
-                url: "http://localhost/api/",
+                url: (process.env.URL ?? "http://localhost/") + "api/",
             }
         ],
     },
