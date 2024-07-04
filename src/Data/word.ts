@@ -15,7 +15,8 @@ export const bookmark = async (token: string, word: string): Promise<boolean> =>
             user.bookmarks.splice(index, 1);
         } else {
             user.bookmarks.unshift(word);
-        }
+        };
+        await user.save();
         return true;
     };
     return false;
